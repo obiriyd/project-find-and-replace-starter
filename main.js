@@ -21,6 +21,25 @@ function getCellElements (currentRowElement) {
 
 
 // YOUR CODE GOES HERE
+replaceAllButton.addEventListener('click', function() {
+    //Store User Input Values
+    let searchString = findInput.value;
+    let replaceString = replaceInput.value;
+    //Start Loop for Rows
+    for (let rowIndex = 0; rowIndex < rowElements.length; rowIndex++) {
+        let currentRowElements = getCellElements(rowElements[rowIndex])
+        //Start Loop for Cells
+        for (cellIndex = 0; cellIndex < currentRowElements.length; cellIndex++) {
+            let currentCellElements = currentRowElements[cellIndex];
+            let cellValue  = currentCellElements.innerHTML;
+            //Search the String for Match and Replace
+            while (cellValue.includes(searchString)) {
+                cellValue = cellValue.replace(searchString, replaceString);
+                currentCellElements.innerHTML = cellValue;
+            }
+        }
+    }
+})
 
 
 // One last thing: dedicate very careful attention to using variables and
